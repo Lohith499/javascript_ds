@@ -1,0 +1,37 @@
+let arr=[7,2,5,4,3];
+function swap(arr,i,j){
+    let x=arr[j];
+    arr[j]=arr[i];
+    arr[i]=x;
+}
+
+function partition(arr,low,high){
+    let pivot=arr[high];
+   // console.log("pivot="+pivot+" low="+low+" high="+high)
+    let i=low;
+    for(let j=low;j<high;j++){
+        if(arr[j]<pivot){
+            swap(arr,i,j);
+            i++;
+        }
+    }
+    swap(arr,i,high)
+    return i;
+}
+
+
+
+function quicksort(arr,low,high){
+
+    if(low<high){
+        let pi=partition(arr,low,high)
+        //console.log("pi="+pi)
+        //console.log(arr)
+        quicksort(arr,low,pi-1)
+        quicksort(arr,pi+1,high)
+    }
+    return arr
+}
+console.log(arr)
+arr=quicksort(arr,0,arr.length-1)
+console.log(arr)
